@@ -1,0 +1,90 @@
+LA FRAGILITÀ È DI TUTTI? — GUIDA RAPIDA AL SITO
+=================================================
+
+COSA C'È IN QUESTA CARTELLA (versione "a cartelle", per pubblicare online)
+- index.html          → Homepage
+- chi-siamo.html       → Il progetto + il team
+- storie.html          → Le storie di Alice, Sindi, Elisa
+- puntate.html         → Tutte le puntate (Stagione 1 + Stagione 2 "coming soon")
+- associazioni.html    → Associazioni e ospiti
+- interventi.html      → Interventi al pubblico (eventi + interviste)
+- sostienici.html      → Come sostenere il podcast
+- magliette.html       → Le magliette del podcast
+- contatti.html        → Social, contatti del team, email/telefono/WhatsApp
+- css/style.css        → Tutto lo stile grafico
+- js/main.js           → Menu mobile, animazioni, caricamento puntate
+- data/episodes.json   → L'elenco delle puntate (da aggiornare voi)
+- assets/              → Tutte le foto del sito, organizzate in sottocartelle
+
+
+COME PUBBLICARE SU GITHUB PAGES
+1. Crea un repository su GitHub (es. "la-fragilita-e-di-tutti"). Può
+   essere pubblico o privato, ma per usare GitHub Pages gratuitamente
+   deve essere pubblico (a meno di avere un piano GitHub Pro/Team).
+2. Carica TUTTO il contenuto di questa cartella dentro il repository,
+   mantenendo la stessa struttura (index.html e le altre pagine nella
+   radice, css/ js/ data/ assets/ come sottocartelle allo stesso
+   livello). Puoi trascinare i file direttamente dall'interfaccia web
+   di GitHub ("Add file" → "Upload files"), oppure con git da terminale.
+3. Vai su Settings → Pages nel repository.
+4. In "Source" scegli il branch "main" (o "master") e la cartella
+   "/ (root)", poi salva.
+5. Dopo un paio di minuti GitHub ti mostrerà l'indirizzo del sito,
+   tipo: https://tuonomeutente.github.io/la-fragilita-e-di-tutti/
+6. Da lì in poi, ogni volta che carichi una modifica sul repository
+   (nuovi file o file aggiornati), il sito online si aggiorna da solo
+   in un minuto o due — non serve rifare nulla su GitHub Pages.
+
+Nota: essendo file statici (HTML/CSS/JS), funzionano esattamente allo
+stesso modo su GitHub Pages, Netlify, o qualsiasi altro hosting.
+
+
+COME AGGIUNGERE UNA NUOVA PUNTATA
+Apri data/episodes.json e aggiungi un blocco così (occhio alla virgola
+tra un episodio e l'altro):
+
+  {
+    "title": "Titolo della puntata",
+    "cover": "assets/episodes/puntata-17.jpg",
+    "description": "La descrizione della puntata",
+    "url_youtube": "https://youtu.be/XXXXXXXXXXX",
+    "url_spotify": "https://creators.spotify.com/pod/...",
+    "url_apple": "https://podcasts.apple.com/..."
+  }
+
+Metti il file immagine della copertina dentro assets/episodes/ (stesso
+nome che usi in "cover"). Se preferisci puoi anche scrivere solo
+"youtubeId": "ABCDEFGHIJK" al posto di "cover": in quel caso la
+miniatura viene presa automaticamente da YouTube usando quell'ID (la
+parte dell'indirizzo del video dopo "v=").
+
+Quando aggiungi puntate della Stagione 2, ricordati di spostarle dal
+box "Coming soon" alla griglia vera sopra, in puntate.html (chiedi pure
+a Claude di farlo per te, se preferisci).
+
+Un aggiornamento completamente automatico — che legga da solo i nuovi
+video appena caricati su YouTube — richiederebbe di collegare la
+YouTube Data API tramite un piccolo servizio lato server (per non
+esporre la chiave API in una pagina pubblica). È un passo in più che
+si può aggiungere in futuro, se vi interessa.
+
+
+COME AGGIORNARE FOTO O TESTI IN GENERALE
+Ogni foto del sito è un file dentro assets/ (organizzato in
+sottocartelle: assets/guests/, assets/interventi/, assets/magliette/,
+ecc.). Per sostituirne una, basta caricare il nuovo file con lo stesso
+nome al posto del vecchio. Per i testi, sono scritti direttamente nei
+file .html e si possono modificare con qualsiasi editor di testo.
+
+Per tutto questo — aggiungere puntate, ospiti, eventi, foto o pagine —
+puoi sempre chiedere a Claude di farlo per te: basta mandare i
+contenuti (foto, testi, link) come hai fatto finora.
+
+
+LA VERSIONE "TUTTO IN UNO"
+Oltre a questa cartella, Claude ti fornisce anche dei file .html
+singoli e autosufficienti (senza bisogno delle cartelle css/js/assets)
+per ogni pagina: sono comodi per un'anteprima veloce aprendoli
+direttamente sul telefono o sul computer, ma NON sono pensati per
+essere caricati su GitHub Pages — per quello serve questa cartella
+"a pezzi", che è più leggera e più facile da aggiornare nel tempo.
